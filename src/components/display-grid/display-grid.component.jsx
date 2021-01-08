@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { generateGrid } from '../../redux/actions';
+import { generateGrid, addItem, removeItem } from '../../redux/actions';
 import GridItem from '../grid-item/grid-item.component';
 import './display-grid.styles.scss';
 
@@ -16,17 +16,27 @@ const DisplayGrid = (props) => {
     totalColumn === 12 ? setIsValidatedGrid(true) : setIsValidatedGrid(false);
   };
 
-  const list = grid.map((item, idx) => (
-    <li key={idx}>
-      Column Width: <b>{item.columnWidth}</b> and content is :{' '}
-      <b>{item.text}</b>
-    </li>
-  ));
+  function renderList() {
+    return grid.map((item) => {
+      return (
+        <li key={item.id} className="list-item">
+          <div className="remove-button" onClick={() => props.removeItem(item)}>
+            &#10005;
+          </div>
+          <div className="add-button" onClick={() => props.addItem(item)}>
+            &#10003;
+          </div>
+          Column Width: <b>{item.columnWidth}</b>
+          {item.text.length > 0 ? `And Text is ${item.text}` : ''}
+        </li>
+      );
+    });
+  }
 
   return (
     <>
-      <ul className="grid"> {list} </ul>
-      {list.length > 0 ? (
+      <ul className="grid"> {renderList()} </ul>
+      {grid.length > 0 || isvalidatedGrid ? (
         <button className="grid-generator-btn" onClick={validateGrid}>
           Generate Grid
         </button>
@@ -40,12 +50,14 @@ const DisplayGrid = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { grid } = state;
-  return { grid };
+  console.log(state);
+  return state;
 };
 
 const mapDispatchToProps = (dispatch) => ({
   generateGrid: (item) => dispatch(generateGrid()),
+  addItem: (item) => dispatch(addItem(item)),
+  removeItem: (item) => dispatch(removeItem(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayGrid);

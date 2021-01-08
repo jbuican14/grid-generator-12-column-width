@@ -13,6 +13,22 @@ ul.grid {
   li {
     padding: 0;
   }
+
+  .list-item {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+  }
+
+  .remove-button {
+    cursor: pointer;
+    color: red;
+  }
+
+  .add-button {
+    cursor: pointer;
+    color: green;
+  }
 }
 
 .container-wrapper {

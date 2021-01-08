@@ -12,12 +12,8 @@ class AddGrid extends React.Component {
       columnWidth: '',
       text: '',
       err: false,
-      totalCount: '',
+      id: '',
     };
-  }
-
-  componentDidMount() {
-    console.log('this.props', this.props);
   }
 
   handleSubmit = (evt) => {
@@ -30,7 +26,6 @@ class AddGrid extends React.Component {
       this.setState({ err: true });
       return;
     }
-
     this.props.addGrid(this.state);
     this.setState({ columnWidth: '', text: '', err: false });
   };
@@ -40,6 +35,7 @@ class AddGrid extends React.Component {
   };
 
   render() {
+    console.log(this.props.grid);
     return (
       <>
         <form onSubmit={this.handleSubmit} className="grid-form">
@@ -70,6 +66,7 @@ class AddGrid extends React.Component {
           />
           <input type="submit" value="Add Grid" className="form-btn" />
         </form>
+        <span>{this.props.grid.error ? this.props.grid.error : ''}</span>
       </>
     );
   }
@@ -81,8 +78,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   const { grid } = state;
-  console.log(grid);
-  return { grid };
+  console.log(state);
+  return state;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddGrid);
