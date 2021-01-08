@@ -1,0 +1,33 @@
+.grid-generator-btn {
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1.5em;
+  display: flex;
+}
+
+ul.grid {
+  list-style: none;
+  padding: 0;
+  margin-left: 1.5em;
+
+  li {
+    padding: 0;
+  }
+}
+
+.container-wrapper {
+  max-width: 1140px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  margin: 15px auto 0px;
+
+  .row {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .container {
+    padding-bottom: 20px;
+  }
+}

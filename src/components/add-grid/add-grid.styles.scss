@@ -1,0 +1,22 @@
+.grid-form {
+  padding: 2rem;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+
+  input:not(.form-btn) {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  input.columnWidth {
+    width: 50%;
+  }
+
+  .form-btn {
+    flex: 0 1 30%;
+    cursor: pointer;
+    width: 30%;
+  }
+}
