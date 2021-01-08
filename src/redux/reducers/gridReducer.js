@@ -2,6 +2,7 @@ import { ADD_GRID, GENERATE_GRID } from '../actionTypes';
 
 const initialState = {
   grid: [],
+  totalWidthGrid: 0,
 };
 
 const gridReducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ const gridReducer = (state = initialState, action) => {
       return {
         ...state,
         grid: [...state.grid, action.payload],
+        totalWidthGrid:
+          state.totalWidthGrid + parseInt(action.payload.columnWidth),
       };
     }
     case GENERATE_GRID: {

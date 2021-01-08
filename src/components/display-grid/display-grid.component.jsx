@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { generateGrid } from '../../redux/actions';
+import GridItem from '../grid-item/grid-item.component';
 import './display-grid.styles.scss';
 
 const DisplayGrid = (props) => {
@@ -22,25 +23,6 @@ const DisplayGrid = (props) => {
     </li>
   ));
 
-  const gridHTML = grid.map((item, idx) => (
-    <div
-      key={idx}
-      style={{
-        gridColumnEnd: `span ${item.columnWidth}`,
-        height: 'auto',
-        border: '1px solid #777',
-      }}
-    >
-      <div className="text-wrapper">
-        <h5>Column</h5>
-        <div>Width: {item.columnWidth}</div>
-        <div className="text">
-          {item.text ? item.text : `Column ${idx + 1}`}
-        </div>
-      </div>
-    </div>
-  ));
-
   return (
     <>
       <ul className="grid"> {list} </ul>
@@ -52,16 +34,7 @@ const DisplayGrid = (props) => {
         ''
       )}
 
-      {isvalidatedGrid ? (
-        <div className="container-wrapper">
-          <div className="container">
-            <p>Grid</p>
-            <div className="row">{gridHTML}</div>
-          </div>
-        </div>
-      ) : (
-        ''
-      )}
+      {isvalidatedGrid ? <GridItem /> : ''}
     </>
   );
 };

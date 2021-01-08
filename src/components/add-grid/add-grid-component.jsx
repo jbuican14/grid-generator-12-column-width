@@ -9,19 +9,28 @@ class AddGrid extends React.Component {
     super(props);
 
     this.state = {
-      columnWidth: '12',
+      columnWidth: '',
       text: '',
       err: false,
+      totalCount: '',
     };
+  }
+
+  componentDidMount() {
+    console.log('this.props', this.props);
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(this.state.columnWidth.length === 0);
-    if (this.state.columnWidth.length === 0) {
+
+    let count =
+      parseInt(this.props.grid.totalWidthGrid) +
+      parseInt(this.state.columnWidth);
+    if (this.state.columnWidth.length === 0 || count > 12) {
       this.setState({ err: true });
       return;
     }
+
     this.props.addGrid(this.state);
     this.setState({ columnWidth: '', text: '', err: false });
   };
@@ -37,7 +46,8 @@ class AddGrid extends React.Component {
           <label>Grid Column Width:</label>
           {this.state.err ? (
             <span style={{ color: 'red' }}>
-              Please provide a grid width between 1-12
+              Grid column width is invalid. It cannot be added or total width is
+              already reached maximum of 12
             </span>
           ) : (
             ''
@@ -69,4 +79,10 @@ const mapDispatchToProps = (dispatch) => ({
   addGrid: (item) => dispatch(addGrid(item)),
 });
 
-export default connect(null, mapDispatchToProps)(AddGrid);
+const mapStateToProps = (state) => {
+  const { grid } = state;
+  console.log(grid);
+  return { grid };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddGrid);
