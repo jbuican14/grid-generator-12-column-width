@@ -38,8 +38,6 @@ const gridReducer = (state = initialState, action) => {
           ...state,
           error: '',
           grid: removeGridItem(state, action.payload),
-          totalWidthGrid:
-            state.totalWidthGrid - parseInt(action.payload.columnWidth),
         };
       }
     }

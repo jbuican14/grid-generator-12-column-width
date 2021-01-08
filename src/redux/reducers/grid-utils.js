@@ -29,36 +29,6 @@ export const removeGridItem = (items, itemToRemove) => {
   });
 
   return output;
-
-  // const remaining = items.grid.filter((item) => item.id !== itemsToRemove.id);
-  // console.log('remaining ', remaining);
-  // items.totalWidthGrid = items.totalWidthGrid - itemsToRemove.columnWidth;
-  // console.log(items.totalWidthGrid, remaining.length); //10
-  // let spaceNeed = 12 - items.totalWidthGrid;
-  // let newGrid;
-  // let leftover;
-  // newGrid = spaceNeed / remaining.length;
-  // console.log('NEW GRID', newGrid);
-  // if (newGrid > 0) {
-  //   if (Math.round(newGrid) === newGrid) {
-  //     newGrid = Math.floor(spaceNeed / remaining.length);
-  //   } else {
-  //     newGrid = Math.floor(spaceNeed / remaining.length);
-  //     leftover = 1;
-  //   }
-  //   items.grid.map((item, idx) => {
-  //     item.columnWidth = parseInt(item.columnWidth) + newGrid;
-  //     if (idx + 1 === remaining.length) {
-  //       item.columnWidth = parseInt(item.columnWidth) + leftover;
-  //     }
-  //   });
-  // } else {
-  //   items.grid[remaining.length - 1].columnWidth = newGrid;
-  // }
-
-  // console.log('RETURN ');
-  // console.log(remaining);
-  // return remaining;
 };
 
 //grid: state.grid.filter((item) => {
