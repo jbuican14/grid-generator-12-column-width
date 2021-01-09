@@ -1,5 +1,5 @@
 import { ADD_GRID, GENERATE_GRID, REMOVE_ITEM, ADD_ITEM } from '../actionTypes';
-import { removeGridItem } from './grid-utils';
+import { removeGridItem, addGridItem } from './grid-utils';
 
 const initialState = {
   grid: [],
@@ -37,24 +37,16 @@ const gridReducer = (state = initialState, action) => {
         return {
           ...state,
           error: '',
+
           grid: removeGridItem(state, action.payload),
         };
       }
     }
 
     case ADD_ITEM: {
-      if (state.grid.columnWidth === '12') {
-        return {
-          ...state,
-          error: 'Item cannot be added',
-          updatedGrid: false,
-        };
-      } else {
-        console.log(action.payload);
-      }
       return {
         ...state,
-        updatedGrid: true,
+        grid: addGridItem(state, action.payload),
       };
     }
 
@@ -65,11 +57,16 @@ const gridReducer = (state = initialState, action) => {
 
 export default gridReducer;
 
+// if (state.grid.columnWidth === '12') {
+//   return {
+//     ...state,
+//     error: 'Item cannot be added',
+//     updatedGrid: false,
+//   };
+// } else {
+//   console.log(action.payload);
+// }
 // return {
 //   ...state,
-//   error: '',
-//   grid: state.grid.filter((item) => {
-//     return item.id !== action.payload.id;
-//   }),
 //   updatedGrid: true,
 // };
