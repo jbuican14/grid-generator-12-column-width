@@ -3,25 +3,6 @@ import { connect } from 'react-redux';
 
 const GridItem = (props) => {
   const { grid } = props.grid;
-  // let newGrid = 0;
-  // let leftover = 0;
-  // let spaceNeed = 0;
-  // if (props.grid.totalWidthGrid < 12) {
-  //   spaceNeed = 12 - props.grid.totalWidthGrid;
-  //   console.log(
-  //     spaceNeed % props.grid.grid.length > 0,
-  //     spaceNeed % props.grid.grid.length,
-  //     spaceNeed
-  //   );
-
-  //   newGrid = spaceNeed / props.grid.grid.length;
-  //   if (Math.round(newGrid) === newGrid) {
-  //     newGrid = Math.floor(spaceNeed / parseInt(props.grid.grid.length));
-  //   } else {
-  //     newGrid = Math.floor(spaceNeed / parseInt(props.grid.grid.length));
-  //     leftover = 1;
-  //   }
-  // }
 
   function rendergridHTML() {
     return grid.map((item, idx) => {
@@ -56,7 +37,6 @@ const GridItem = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  console.log(state);
   const { grid } = state;
   return { grid };
 };

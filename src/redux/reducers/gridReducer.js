@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const gridReducer = (state = initialState, action) => {
-  console.log('add grid', action.payload);
   switch (action.type) {
     case ADD_GRID: {
       action.payload.id = new Date().getTime();
@@ -37,7 +36,6 @@ const gridReducer = (state = initialState, action) => {
         return {
           ...state,
           error: '',
-
           grid: removeGridItem(state, action.payload),
         };
       }
@@ -56,17 +54,3 @@ const gridReducer = (state = initialState, action) => {
 };
 
 export default gridReducer;
-
-// if (state.grid.columnWidth === '12') {
-//   return {
-//     ...state,
-//     error: 'Item cannot be added',
-//     updatedGrid: false,
-//   };
-// } else {
-//   console.log(action.payload);
-// }
-// return {
-//   ...state,
-//   updatedGrid: true,
-// };

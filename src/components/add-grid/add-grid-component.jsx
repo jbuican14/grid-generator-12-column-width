@@ -35,7 +35,6 @@ class AddGrid extends React.Component {
   };
 
   render() {
-    console.log(this.props.grid);
     return (
       <>
         <form onSubmit={this.handleSubmit} className="grid-form">
@@ -77,8 +76,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => {
-  const { grid } = state;
-  console.log(state);
   return state;
 };
 
