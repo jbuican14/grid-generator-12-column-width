@@ -8,7 +8,11 @@
 ul.grid {
   list-style: none;
   padding: 0;
-  margin-left: 1.5em;
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  transform: translateX(50%);
+  flex-direction: column;
 
   li {
     padding: 0;
@@ -16,18 +20,25 @@ ul.grid {
 
   .list-item {
     display: flex;
-    width: 40%;
-    justify-content: space-around;
+    width: 100%;
   }
 
   .remove-button {
     cursor: pointer;
     color: red;
+    width: 50px;
+    display: inline-block;
   }
 
   .add-button {
     cursor: pointer;
     color: green;
+    width: 50px;
+    display: inline-block;
+  }
+
+  span.column-width {
+    margin-right: 1em;
   }
 }
 
@@ -45,5 +56,23 @@ ul.grid {
 
   .container {
     padding-bottom: 20px;
+  }
+
+  .export-html-btn,
+  .export-json-btn {
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    outline-color: transparent;
+    border: none;
+    flex: 0 1 30%;
+    cursor: pointer;
+    width: 20%;
+    outline: none;
+    padding: 0.5em;
+    text-transform: uppercase;
+
+    :hover {
+      background-color: #3c3b3b;
+    }
   }
 }

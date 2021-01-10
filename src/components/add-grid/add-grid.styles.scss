@@ -3,20 +3,49 @@
   display: flex;
   width: 50%;
   flex-direction: column;
+  margin: 0 auto;
 
   input:not(.form-btn) {
     width: 100%;
     padding: 0.5em;
     margin-bottom: 0.5em;
+    border-style: none;
+    border: none;
+
+    :focus {
+      outline-color: transparent;
+    }
   }
 
   input.columnWidth {
     width: 50%;
+
+    :active {
+      outline: none;
+    }
+  }
+
+  input:active {
+    outline: none;
   }
 
   .form-btn {
     flex: 0 1 30%;
     cursor: pointer;
     width: 30%;
+    outline: none;
+    padding: 0.5em;
+    text-transform: uppercase;
+    border: none;
+  }
+
+  :hover {
+    background-color: #3c3b3b;
+  }
+
+  :disabled {
+    background-color: honeydew;
+    color: #9e9e9e;
+    pointer-events: none;
   }
 }

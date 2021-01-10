@@ -13,6 +13,7 @@ class AddGrid extends React.Component {
       text: '',
       err: false,
       id: '',
+      displayButton: true,
     };
   }
 
@@ -38,7 +39,7 @@ class AddGrid extends React.Component {
     return (
       <>
         <form onSubmit={this.handleSubmit} className="grid-form">
-          <label>Grid Column Width:</label>
+          <label>Grid Generator:</label>
           {this.state.err ? (
             <span style={{ color: 'red' }}>
               Grid column width is invalid. It cannot be added or total width is
@@ -60,12 +61,20 @@ class AddGrid extends React.Component {
           <input
             type="text"
             value={this.state.text}
-            placeholder="Text *optional"
+            placeholder="Fill out the text for the grid *optional"
             onChange={(e) => this.setState({ text: e.target.value })}
           />
-          <input type="submit" value="Add Grid" className="form-btn" />
+
+          <input
+            type="submit"
+            value="Add Grid"
+            className="form-btn"
+            disabled={this.props.grid.totalWidthGrid === 12}
+          />
         </form>
-        <span>{this.props.grid.error ? this.props.grid.error : ''}</span>
+        <span className="error">
+          {this.props.grid.error ? this.props.grid.error : ''}
+        </span>
       </>
     );
   }
